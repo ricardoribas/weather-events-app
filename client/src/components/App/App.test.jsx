@@ -9,7 +9,7 @@ describe('App', () => {
 
   it('should render correctly', () => {
     const renderer = new ShallowRenderer();
-    renderer.render(<App {...props} />);
+    renderer.render(<App />);
 
     expect(renderer.getRenderOutput()).toMatchSnapshot();
   });
