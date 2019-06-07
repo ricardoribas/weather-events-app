@@ -1,0 +1,29 @@
+{
+  "name": "weather-events-app",
+  "version": "1.0.0",
+  "description": "Create cool events aware of the forecast",
+  "main": "index.js",
+  "scripts": {
+    "install": "(cd ./client && npm install) && (cd ./server && npm install)",
+    "client": "(cd ./client && npm start)",
+    "build": "(cd ./client && npm run build)",
+    "server": "(cd ./server && npm start)",
+    "serverDebug": "(cd ./server && npm run debug)",
+    "pretest": "(cd ./client && npm run lint) && (cd ./server && npm run lint)",
+    "test": "(cd ./client && CI=true npm test) && (cd ./server && CI=true npm test)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricardoribas/weather-events-app.git"
+  },
+  "keywords": [
+    "weather",
+    "events"
+  ],
+  "author": "Ricardo Ribas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ricardoribas/weather-events-app/issues"
+  },
+  "homepage": "https://github.com/ricardoribas/weather-events-app#readme"
+}
