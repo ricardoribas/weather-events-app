@@ -9,7 +9,7 @@ async function getAllEvents(req, res) {
             res.json(events);
         })
         .catch(err => {
-            res.err(err);
+            req.err(err);
         })
 }
 
@@ -22,7 +22,7 @@ async function createEvent(req, res) {
             res.json(createdEvent);
         })
         .catch(err => {
-            res.err(err);
+            req.err(err);
         });
 }
 
