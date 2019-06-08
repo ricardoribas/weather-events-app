@@ -1,6 +1,12 @@
-/* eslint-disable no-console */
+const EventsController = require('./../controllers/events');
+
 module.exports = (router) => {
-  router.get('/api/events', async (req, res) => {
-    res.send("getting events");
-  });
+  router
+    .route('/')
+    .get(EventsController.getAllEvents)
+    .post(EventsController.createEvent)
+    .put(EventsController.updateEvent)
+    .delete(EventsController.deleteEvent);
+
+  return router;
 };
