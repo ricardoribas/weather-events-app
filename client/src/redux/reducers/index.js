@@ -1,5 +1,5 @@
 // import { getSimpleDate } from './../../formatters';
-import { GET_EVENTS, EVENT_DELETED, EVENT_UPDATED } from './../constants';
+import { GET_EVENTS, EVENT_DELETED, EVENT_UPDATED, EVENT_CREATED } from './../constants';
 
 export const DEFAULT_CONFIG = {
   location: undefined,
@@ -19,12 +19,16 @@ export default (state = currentState, action) => {
       return Object.assign({}, state, {
         events: action.payload
       });
+    case EVENT_CREATED:
+      state.events.push(action.payload);
+
+      return state;
     case EVENT_DELETED: 
       return Object.assign({}, state, {
         events: state.events.splice(getEventIndex(state.events, action.payload.id), 1)
       });
     case EVENT_UPDATED:
-      state.events[getEventIndex(state.events, saction.payload._id)] = action.payload;
+      state.events[getEventIndex(state.events, action.payload._id)] = action.payload;
 
       return state;
     default:

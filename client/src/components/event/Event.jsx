@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import {
+  Button,
+  Form
+} from 'react-bootstrap';
 import Calendar from 'react-calendar'
 import React from 'react';
 
 import { deleteEvent, updateEvent } from './../../redux/actions/events';
-import { throws } from 'assert';
 
 const mapDispatchToProps = dispatch => ({
   deleteEvent: params => dispatch(deleteEvent(params)),
