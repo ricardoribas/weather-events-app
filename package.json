@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/ricardoribas/weather-events-app/issues"
   },
-  "homepage": "https://github.com/ricardoribas/weather-events-app#readme"
+  "homepage": "https://github.com/ricardoribas/weather-events-app#readme",
+  "dependencies": {
+    "dotenv": "^8.0.0"
+  }
 }
