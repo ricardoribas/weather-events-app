@@ -1,4 +1,7 @@
 import { connect } from 'react-redux';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import React, { Component } from 'react';
 
 import Events from '../events';
@@ -16,9 +19,16 @@ export class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Events />
-      </div>
+      <Container className="App">
+        <Row>
+          <Col xs={6}>Header with search options</Col>
+        </Row>
+        <Row>
+          <Col>
+            <Events />
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
