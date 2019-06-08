@@ -37,7 +37,7 @@ router.get('/ping', (req, res) => {
   res.send('pong');
 });
 
-const apiRoutes = require('./api/router')(router);
+const apiRoutes = require('./api/router')(router, config);
 
 app.use('/api', apiRoutes);
 
