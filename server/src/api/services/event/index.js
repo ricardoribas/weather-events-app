@@ -1,14 +1,12 @@
-const EventsRepository = require('./../../repository/events');
+const EventsRepository = require('./../../repository/event');
 
-function getAllEvents(filterParams) {
-    const { location, date } = filterParams;
-
+function getEvent(eventId) {
     return new Promise(function(resolve, reject) {
-        EventsRepository.getAllEvents((error, results) => {
+        EventsRepository.getEvent(eventId, (error, result) => {
             if (error) {
                 reject(error);
             } else {
-                resolve(results);
+                resolve(result);
             }
         });
     });
@@ -51,7 +49,7 @@ function deleteEvent(eventId) {
 }
 
 module.exports = {
-    getAllEvents,
+    getEvent,
     createEvent,
     updateEvent,
     deleteEvent
