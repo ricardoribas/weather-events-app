@@ -5,22 +5,14 @@ const eventSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    description: {
+    date: {
         type: String,
-        required: false
+        required: true
+    },
+    creationDate: {
+        type: Date,
+        default: Date.now
     }
-    // date: {
-    //     type: String,
-    //     required: true
-    // },
-    // creationDate: {
-    //     type: Date,
-    //     default: Date.now
-    // },
-    // lastUpdate: {
-    //     type: Date,
-    //     default: Date.now
-    // }
 });
 
 module.exports = mongoose.model('scheduledEvent', eventSchema);

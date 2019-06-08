@@ -1,15 +1,29 @@
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
-import STYLES from './App.scss';
+import Events from '../events';
 
-const c = className => STYLES[className] || 'UNKNOWN';
+import { getEvents } from '../../redux/actions/events';
+
+const mapDispatchToProps = dispatch => ({
+  getEvents: params => dispatch(getEvents(params))
+});
 
 export class App extends Component {
+  componentDidMount() {
+    this.props.getEvents()
+  }
+
   render() {
     return (
-      <div className="App"></div>
+      <div className="App">
+        <Events />
+      </div>
     );
   }
 }
 
-export default App;
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);

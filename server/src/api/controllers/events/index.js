@@ -1,8 +1,10 @@
 const EventsService = require('./../../services/events');
 
 async function getAllEvents(req, res) {
+    const filterParams = req.query;
+
     EventsService
-        .getAllEvents()
+        .getAllEvents(filterParams)
         .then((events) => {
             res.json(events);
         })
@@ -24,35 +26,7 @@ async function createEvent(req, res) {
         });
 }
 
-async function updateEvent(req, res) {
-    const $event = req.body;
-
-    EventsService
-        .createEvent($event)
-        .then((updatedEvent) => {
-            res.json(updatedEvent);
-        })
-        .catch(err => {
-            res.err(err);
-        });
-}
-
-async function deleteEvent(req, res) {
-    const eventId = req.query.id;
-
-    EventsService
-        .deleteEvent(eventId)
-        .then(() => {
-            res.json({});
-        })
-        .catch(err => {
-            res.err(err);
-        });
-}
-
 module.exports = {
     getAllEvents,
-    createEvent,
-    updateEvent,
-    deleteEvent
+    createEvent
 }

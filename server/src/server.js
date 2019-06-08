@@ -35,6 +35,7 @@ router.get('/ping', (req, res) => {
 });
 
 const eventsApi = require('./api/events')(router);
+
 app.use('/api/events', eventsApi);
 
 app.listen(config.port, () => {
