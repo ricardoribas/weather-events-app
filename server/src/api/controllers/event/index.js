@@ -13,19 +13,6 @@ async function getEvent(req, res) {
         });
 }
 
-async function createEvent(req, res) {
-    const newEvent = req.body;
-
-    EventsService
-        .createEvent(newEvent)
-        .then((createdEvent) => {
-            res.json(createdEvent);
-        })
-        .catch(err => {
-            res.err(err);
-        });
-}
-
 async function updateEvent(req, res) {
     const $event = req.body;
 
@@ -54,7 +41,6 @@ async function deleteEvent(req, res) {
 
 module.exports = {
     getEvent,
-    createEvent,
     updateEvent,
     deleteEvent
 }
