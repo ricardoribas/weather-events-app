@@ -15,7 +15,7 @@ export default (state = currentState, action) => {
   switch (action.type) {
     case GET_EVENTS:
       return Object.assign({}, state, {
-        etineraries: action.payload.events
+        events: action.payload
       });
     default:
       return state;
