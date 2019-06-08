@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import React from 'react';
+import { Link } from "react-router-dom";
+
+// import Event from './../event';
 
 const mapStateToProps = state => ({ events: state.events });
 
@@ -13,8 +16,7 @@ function getEvents(events = []) {
         <td></td>
         <td>{e.title}</td>
         <td>{e.date}</td>
-        <td><Button variant="primary">Edit</Button></td>
-        <td><Button variant="danger">Delete</Button></td>
+        <td><Link to={{ pathname: '/events/detail', event: e }}>View</Link></td>
       </tr>
     ));
 }

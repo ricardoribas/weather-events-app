@@ -4,24 +4,17 @@ function createEvent(newEvent, callback) {
     ScheduledEvent.create(newEvent, callback);
 }
 
-function getEvent(eventId, callback) {
-    ScheduledEvent.findById(eventId, callback);
-}
-
 function updateEvent($event, callback) {
-    ScheduledEvent.update({
-        _id: $event.id
-    }, $event, callback);
+    ScheduledEvent.findByIdAndUpdate($event._id, $event, { new: true }, callback);
 }
 
 function deleteEvent(eventId, callback) {
-    ScheduledEvent.remove({
+    ScheduledEvent.findByIdAndRemove({
         _id: eventId
     }, callback);
 }
 
 module.exports = {
-    getEvent,
     createEvent,
     updateEvent,
     deleteEvent

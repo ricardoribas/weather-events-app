@@ -1,12 +1,15 @@
 import { connect } from 'react-redux';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+  Container
+} from 'react-bootstrap';
+
 import React, { Component } from 'react';
 
 import Events from '../events';
-
+import Event from '../event';
 import { getEvents } from '../../redux/actions/events';
+
 
 const mapDispatchToProps = dispatch => ({
   getEvents: params => dispatch(getEvents(params))
@@ -20,14 +23,19 @@ export class App extends Component {
   render() {
     return (
       <Container className="App">
-        <Row>
-          <Col xs={6}>Header with search options</Col>
-        </Row>
-        <Row>
-          <Col>
-            <Events />
-          </Col>
-        </Row>
+        <Router>
+          <div>
+            <ul>
+              <li>
+                <Link to="/events">Events</Link>
+              </li>
+            </ul>
+            <Route exact path="/events" component={Events} />
+            <Route path="/events/detail" render={(props)=>{
+              return (<Event event={props.location.event} />)
+            } }/>
+          </div>
+        </Router>
       </Container>
     );
   }

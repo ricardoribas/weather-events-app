@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
@@ -13,12 +14,14 @@ if (!config) {
 }
 
 const app = express();
-const router = express.Router();
 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(bodyParser.json());
+app.use(cors());
+
+const router = express.Router();
 
 app.use(headersMiddleware);
 router.use(requestMiddleware);
@@ -34,9 +37,9 @@ router.get('/ping', (req, res) => {
   res.send('pong');
 });
 
-const eventsApi = require('./api/events')(router);
+const apiRoutes = require('./api/router')(router);
 
-app.use('/api/events', eventsApi);
+app.use('/api', apiRoutes);
 
 app.listen(config.port, () => {
   console.log(`Node server listening on http://localhost:${config.port}`);
