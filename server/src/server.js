@@ -1,5 +1,8 @@
 /* eslint-disable no-console */
 const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
 const config = require('./config')();
 
 const headersMiddleware = require('./api/middleware/headers');
@@ -12,8 +15,22 @@ if (!config) {
 const app = express();
 const router = express.Router();
 
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
+
 app.use(headersMiddleware);
 router.use(requestMiddleware);
+
+mongoose.connect(config.dbPath, {
+    useNewUrlParser: true 
+  }, () => {
+    debugger;
+  });
+const db = mongoose.connection;
+
+debugger;
 
 router.get('/', (req, res) => {
   res.send('Welcome to Ogun api');
