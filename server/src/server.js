@@ -26,19 +26,16 @@ router.use(requestMiddleware);
 mongoose.connect(config.dbPath, {
     useNewUrlParser: true 
   }, () => {
-    debugger;
+    // Something happened with the database 
   });
 const db = mongoose.connection;
 
-debugger;
-
-router.get('/', (req, res) => {
-  res.send('Welcome to Ogun api');
+router.get('/ping', (req, res) => {
+  res.send('pong');
 });
 
-require('./api/events')(router);
-
-app.use('/', router);
+const eventsApi = require('./api/events')(router);
+app.use('/api/events', eventsApi);
 
 app.listen(config.port, () => {
   console.log(`Node server listening on http://localhost:${config.port}`);

@@ -1,7 +1,14 @@
 const EventsService = require('./../../services/events');
 
-function getAllEvents() {
-    return EventsService.getAllEvents();
+async function getAllEvents(req, res) {
+    EventsController
+        .getAllEvents()
+        .then((events) => {
+            res.json(events);
+        })
+        .catch(err => {
+            res.err(err);
+        })
 }
 
 module.exports = {
