@@ -9,6 +9,10 @@ const eventSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    weather: {
+        type: Object,
+        required: false
+    },
     date: {
         type: String,
         required: true
