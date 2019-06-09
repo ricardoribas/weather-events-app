@@ -1,8 +1,14 @@
-/* eslint-disable no-console */
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+
+process.on('uncaughtException', (err, origin) => {
+  console.log(err);
+});
+process.on('unhandledRejection', (reason, promise) => {
+  console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+});
 
 const config = require('./config')();
 
@@ -15,11 +21,11 @@ if (!config) {
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(cors());
 
 const router = express.Router();
 
@@ -28,10 +34,9 @@ router.use(requestMiddleware);
 
 mongoose.connect(config.dbPath, {
     useNewUrlParser: true 
-  }, () => {
-    // Something happened with the database 
+  }, (error) => {
+    error && console.log('A database error occurred', error);
   });
-const db = mongoose.connection;
 
 router.get('/ping', (req, res) => {
   res.send('pong');
