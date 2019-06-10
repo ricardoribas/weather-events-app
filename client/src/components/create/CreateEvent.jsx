@@ -9,10 +9,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export class CreateEvent extends ChangeEvent {
-	constructor(props) {
-		super(props);
-	}
-
 	executeAction(event) {
 		event.preventDefault();
 		this.props.createEvent(this.state);
