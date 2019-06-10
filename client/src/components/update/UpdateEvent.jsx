@@ -7,7 +7,7 @@ import {
 import Calendar from 'react-calendar'
 import React from 'react';
 
-import { deleteEvent, updateEvent } from './../../redux/actions/events';
+import { deleteEvent, updateEvent } from '../../redux/actions/events';
 
 const mapDispatchToProps = dispatch => ({
   deleteEvent: params => dispatch(deleteEvent(params)),

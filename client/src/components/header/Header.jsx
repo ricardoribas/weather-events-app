@@ -6,7 +6,7 @@ import {
 
 import Events from './../events';
 import CreateEvent from './../create';
-import Event from './../event';
+import Event from '../update';
 import './Header.scss';
 
 import React from 'react';
