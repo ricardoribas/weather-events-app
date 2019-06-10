@@ -23,11 +23,13 @@ module.exports = () => {
   const baseApiUrl = API_BASE_URL;
   const dbPath = DB_LOCATION;
 
-  return !error ? {
-    port,
-    dbPath,
-    ogunApi: `${baseApiUrl}:${port}`,
-    darkSkyApi: `https://api.darksky.net/forecast/${DARK_SKY_SECRET_KEY}/`,
-    mapBoxApi: `https://api.mapbox.com/geocoding/v5/mapbox.places/${PLACEHOLDER_LOCATION}.json?access_token=${MAP_BOX_API_TOKEN}`
-  } : undefined;
+  if (!error) {
+    return {
+      port,
+      dbPath,
+      ogunApi: `${baseApiUrl}:${port}`,
+      darkSkyApi: `https://api.darksky.net/forecast/${DARK_SKY_SECRET_KEY}/`,
+      mapBoxApi: `https://api.mapbox.com/geocoding/v5/mapbox.places/${PLACEHOLDER_LOCATION}.json?access_token=${MAP_BOX_API_TOKEN}`
+    }
+  }
 };

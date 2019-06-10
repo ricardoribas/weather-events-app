@@ -1,4 +1,5 @@
 const STATUS_CODES = {
+  BAD_REQUEST: 400,
   UNKNOWN: 500
 };
 
