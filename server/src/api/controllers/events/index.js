@@ -1,6 +1,7 @@
 const config = require('./../../../config')();
 const fetch = require('node-fetch');
 
+const { executeRequest } = require('./../../utils/request')
 const EventsService = require('./../../services/events');
 const EventDecorator = require('./../../decorators/event');
 const { PLACEHOLDER_LOCATION } = require('./../../constants');
@@ -14,7 +15,7 @@ async function getAllEvents(req, res) {
             res.json(events);
         })
         .catch(err => {
-            req.err(err);
+            res.error(err);
         })
 }
 
@@ -34,7 +35,7 @@ async function createEvent(req, res) {
                 res.json(createdEvent);
             })
             .catch(err => {
-                req.err(err);
+                res.error(err);
             });
     }
 

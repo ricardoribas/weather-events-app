@@ -9,7 +9,7 @@ async function updateEvent(req, res) {
             res.json(updatedEvent);
         })
         .catch(err => {
-            req.err(err);
+            res.error(err);
         });
 }
 
@@ -22,7 +22,7 @@ async function deleteEvent(req, res) {
             res.json({});
         })
         .catch(err => {
-            req.err(err);
+            res.error(err);
         });
 }
 
