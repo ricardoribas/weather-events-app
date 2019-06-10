@@ -1,4 +1,8 @@
 .App {
     margin: 0;
-    padding: 0
+    padding: 0;
+
+    &__Container {
+        padding: .5rem 1rem;
+    }
 }

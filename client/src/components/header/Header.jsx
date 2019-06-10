@@ -1,12 +1,8 @@
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Navbar,
   Nav
 } from 'react-bootstrap';
-
-import Events from './../events';
-import CreateEvent from './../create';
-import Event from '../update';
 import './Header.scss';
 
 import React from 'react';
@@ -22,11 +18,6 @@ export default () => {
           <Link to="/events/create">Create a new event</Link>
         </Nav>
       </Navbar.Collapse>
-      <Route exact path="/events" component={Events} />
-      <Route exact path="/events/create" component={CreateEvent} />
-      <Route path="/events/detail" render={(props)=>{
-        return (<Event event={props.location.event} />)
-      } }/>
     </Navbar>
   );
 }

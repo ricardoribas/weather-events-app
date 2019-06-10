@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
 function getLocation($event) {
 	if ($event.location) {
 		return (
-			`@{$event.location}`
+			`@${$event.location}`
 		);
 	}
 

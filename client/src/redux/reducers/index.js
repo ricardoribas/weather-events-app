@@ -24,9 +24,9 @@ export default (state = currentState, action) => {
 
       return state;
     case EVENT_DELETED: 
-      return Object.assign({}, state, {
-        events: state.events.splice(getEventIndex(state.events, action.payload.id), 1)
-      });
+      state.events.splice(getEventIndex(state.events, action.payload.id), 1)
+
+      return state;
     case EVENT_UPDATED:
       state.events[getEventIndex(state.events, action.payload._id)] = action.payload;
 
