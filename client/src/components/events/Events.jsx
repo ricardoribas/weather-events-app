@@ -18,6 +18,26 @@ const mapDispatchToProps = dispatch => ({
 	deleteEvent: params => dispatch(deleteEvent(params)),
 });
 
+function getLocation($event) {
+	if ($event.location) {
+		return (
+			`@{$event.location}`
+		);
+	}
+
+	return 'No location info provided';
+}
+
+function getWeatherConditions($event) {
+	if ($event.weather.summary === 'Unknown') {
+		return $event.weather.summary;
+	}
+
+	const { summary, temperature } = $event.weather;
+
+	return `${temperature}C - ${summary}`;
+}
+
 function getEvents(events = []) {
 	if (events.length) {
 		return events
@@ -27,11 +47,14 @@ function getEvents(events = []) {
 						<Card.Title>{e.title}</Card.Title>
 						<Card.Subtitle className="mb-2 text-muted">{e.date}</Card.Subtitle>
 						<Card.Text>
-							@{e.location}
+							{getLocation(e)}<br />
+							Weather conditions: {getWeatherConditions(e)}
 						</Card.Text>
 						<Link to={{ pathname: '/events/detail', event: e }}>Edit event</Link>
-						<Button variant="danger" onClick={this.onDeleteEvent(e._id)}>Delete event</Button>
 					</Card.Body>
+					<Card.Footer>
+						<Button variant="danger" onClick={this.onDeleteEvent.bind(null, e._id)}>Delete event</Button>
+					</Card.Footer>
 				</Card>
 			));
 	} else {
@@ -60,7 +83,7 @@ class Events extends React.Component {
 					<Col><h1>Ogun Events</h1></Col>
 				</Row>
 				<Row>
-					{getEvents(this.props.events)}
+					{getEvents.call(this, this.props.events)}
 				</Row>
 			</div>
 		);
