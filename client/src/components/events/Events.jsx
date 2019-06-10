@@ -1,11 +1,8 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
-  Button,
-  Table,
-  Form
+  Table
 } from 'react-bootstrap';
-import Calendar from 'react-calendar'
 import React from 'react';
 import { Link } from "react-router-dom";
 
@@ -30,51 +27,7 @@ function getEvents(events = []) {
 }
 
 class Events extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      title: '',
-      location: '',
-      date: new Date()
-    }
-    
-    this.onCreateEvent = this.onCreateEvent.bind(this);
-    this.onTitleChanged = this.onTitleChanged.bind(this);
-    this.onLocationChanged = this.onLocationChanged.bind(this);
-    this.onDateChanged = this.onDateChanged.bind(this);
-  }
-
-  onCreateEvent() {
-    this.props.createEvent(this.state);
-  }
-
-  onTitleChanged(event) {
-    const state = this.state;
-
-    this.setState(Object.assign({}, state, {
-      title: event.target.value
-    }));
-  }
-
-  onLocationChanged(event) {
-    const state = this.state;
-
-    this.setState(Object.assign({}, state, {
-      location: event.target.value
-    }));
-  }
-
-  onDateChanged(newDate) {
-    const state = this.state;
-
-    this.setState(Object.assign({}, state, {
-      date: newDate
-    }));
-  }
-
-  render(events) {
+  render() {
     return (
       <Table>
         <thead>
@@ -88,22 +41,6 @@ class Events extends React.Component {
         </thead>
         <tbody>
           {getEvents(this.props.events)}
-          <tr>
-            <td></td>
-            <td><Form.Control type="text" placeholder="Title" value={this.state.title} onChange={this.onTitleChanged} /></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><Form.Control type="text" placeholder="Location" value={this.state.location} onChange={this.onLocationChanged} /></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><Calendar onChange={this.onDateChanged} value={new Date(this.state.date)} /></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><Button variant="success" onClick={this.onCreateEvent}>Create</Button></td>
-          </tr>
         </tbody>
       </Table>
     );

@@ -12,7 +12,7 @@ async function getAllEvents(req, res) {
     EventsService
         .getAllEvents(filterParams)
         .then((events) => {
-            res.json(events);
+            res.send(events);
         })
         .catch(err => {
             res.error(err);

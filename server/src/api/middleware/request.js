@@ -4,7 +4,7 @@ const { hasValidRequest } = require('./../utils/request');
 module.exports = (req, res, next) => {
   if (hasValidRequest(req)) {
     next();
+  } else {
+    res.status(BAD_REQUEST);
   }
-
-  res.status(BAD_REQUEST);
 };

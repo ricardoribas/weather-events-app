@@ -1,16 +1,13 @@
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import {
   Container,
-  Navbar,
-  Nav
 } from 'react-bootstrap';
 import './App.scss';
 
 import React, { Component } from 'react';
 
-import Events from '../events';
-import Event from '../event';
+import Navbar from '../header';
 import { getEvents } from '../../redux/actions/events';
 
 const mapDispatchToProps = dispatch => ({
@@ -26,19 +23,7 @@ export class App extends Component {
     return (
       <Container className="App">
         <Router>
-          <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">Ogun recruitment test</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mr-auto">
-                <Link to="/events">Events</Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-          <Route exact path="/events" component={Events} />
-          <Route path="/events/detail" render={(props)=>{
-            return (<Event event={props.location.event} />)
-          } }/>
+          <Navbar />
         </Router>
       </Container>
     );
