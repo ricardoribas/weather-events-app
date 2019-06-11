@@ -4,7 +4,11 @@ function getAllEvents(filterParams) {
     const { location, date } = filterParams;
 
     return new Promise(function(resolve, reject) {
-        EventsRepository.getAllEvents((error, results) => {
+        EventsRepository.getAllEvents({
+            location,
+            date
+        }, 
+        (error, results) => {
             if (error) {
                 reject(error);
             } else {

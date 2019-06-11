@@ -4,13 +4,15 @@ import {
 	Card,
 	Row,
 	Col,
-	Button
+	Button,
+	Accordion
 } from 'react-bootstrap';
 import React from 'react';
 import { Link } from "react-router-dom";
 
 import './Events.scss';
 import { deleteEvent, createEvent } from '../../redux/actions/events';
+import Filters from './../filters';
 
 const mapStateToProps = state => ({ events: state.events });
 const mapDispatchToProps = dispatch => ({
@@ -81,6 +83,24 @@ class Events extends React.Component {
 			<div>
 				<Row>
 					<Col><h1>Ogun Events</h1></Col>
+				</Row>
+				<Row>
+					<Col>
+						<Accordion>
+							<Card>
+								<Card.Header>
+								<Accordion.Toggle as={Button} variant="link" eventKey="0">
+									Filters
+								</Accordion.Toggle>
+								</Card.Header>
+								<Accordion.Collapse eventKey="0">
+								<Card.Body>
+									<Filters />
+								</Card.Body>
+								</Accordion.Collapse>
+							</Card>
+						</Accordion>
+					</Col>
 				</Row>
 				<Row>
 					{getEvents.call(this, this.props.events)}

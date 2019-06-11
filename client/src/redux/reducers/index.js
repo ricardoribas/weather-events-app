@@ -1,10 +1,6 @@
-// import { getSimpleDate } from './../../formatters';
 import { GET_EVENTS, EVENT_DELETED, EVENT_UPDATED, EVENT_CREATED } from './../constants';
 
-export const DEFAULT_CONFIG = {
-  location: undefined,
-  date: Date.now()
-};
+export const DEFAULT_CONFIG = {};
 
 const currentState = {
   events: [],

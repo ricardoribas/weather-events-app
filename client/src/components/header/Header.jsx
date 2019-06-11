@@ -10,7 +10,7 @@ import React from 'react';
 export default () => {
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">Ogun recruitment test</Navbar.Brand>
+      <Navbar.Brand href="/">Ogun recruitment test</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">

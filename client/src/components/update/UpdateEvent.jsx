@@ -15,11 +15,10 @@ class Event extends ChangeEvent {
     const { event } = this.props;
 
     this.state = event;
-    
-    this.onDeleteEvent = this.onDeleteEvent.bind(this);
   }
 
-  executeAction() {
+  executeAction(event) {
+    event.preventDefault();
     this.props.updateEvent(this.state);
   }
 };

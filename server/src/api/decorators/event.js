@@ -1,3 +1,5 @@
+const { getSimpleDate } = require('./../formatters');
+
 const DEFAULT_FORECAST = {
     summary: 'Unknown',
     temperature: -1
@@ -9,6 +11,11 @@ module.exports = (function() {
     return {
         from($event) {
             $decorator = $event;
+
+            return this;
+        },
+        withDate() {
+            $decorator.date = new Date($decorator.date);
 
             return this;
         },
