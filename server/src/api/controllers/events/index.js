@@ -1,7 +1,6 @@
 const config = require('./../../../config')();
 const fetch = require('node-fetch');
 
-const { executeRequest } = require('./../../utils/request')
 const EventsService = require('./../../services/events');
 const EventDecorator = require('./../../decorators/event');
 const { PLACEHOLDER_LOCATION } = require('./../../constants');
@@ -12,7 +11,7 @@ async function getAllEvents(req, res) {
     EventsService
         .getAllEvents(filterParams)
         .then((events) => {
-            res.json(events);
+            res.send(events);
         })
         .catch(err => {
             res.error(err);
@@ -25,6 +24,7 @@ async function createEvent(req, res) {
     const controllerHandler = (forecast) => {
         const transformedEvent = EventDecorator
             .from(newEvent)
+            .withDate()
             .withForecast(forecast)
             .get();
 

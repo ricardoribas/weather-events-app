@@ -1,0 +1,10 @@
+.Events {
+    &__Card {
+        width: 100%;
+        border: 0;
+
+        &--hidden {
+            display: none
+        }
+    }
+}
