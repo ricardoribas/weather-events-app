@@ -1,0 +1,12 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "import/no-named-as-default": "off",
+    "comma-dangle": "off"
+  }
+}
